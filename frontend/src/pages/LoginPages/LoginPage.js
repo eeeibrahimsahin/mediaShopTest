@@ -17,7 +17,6 @@ export default function LoginPage({ location, history }) {
     const userLogin = useSelector((state) => state.userLogin);
     const { loading, userInfo, error } = userLogin;
     const redirect = location.search ? location.search.split('=')[1] : '/';
-
     useEffect(() => {
         if (userInfo) {
             history.push(redirect);
@@ -41,6 +40,7 @@ export default function LoginPage({ location, history }) {
     };
     const handleSocialLoginFailure = (err) => {
         console.error(err);
+        window.location.reload();
     };
     return (
         <div className="body">
